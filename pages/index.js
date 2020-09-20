@@ -1,203 +1,275 @@
+import { useState, useEffect } from 'react'
+import { useSession } from 'next-auth/client'
+import Layout from '../components/layout'
+import { signIn } from 'next-auth/client'
 import Head from 'next/head'
+import Header from '../components/head';
+import HeaderPage from '../components/header';
+function Home ({users, usersc}) {
+  const [ session, loading ] = useSession()
+  const [ content , setContent ] = useState()
 
-const Home = () => (
+  // Fetch content from protected route
+ 
+
+  // When rendering client side don't display anything until loading is complete
+  if (typeof window !== 'undefined' && loading) return null
+
+  // If no session exists, display access denied message
+  if (!session) {  signIn() }
+
+  // If session exists, display content
+  return (
+      
   <div className="container">
     <Head>
-      <title>Create Next App</title>
+      <title>FoodApp Admin</title>
       <link rel="icon" href="/favicon.ico" />
+
+      
+      <script src="/static/assets/js/jquery.min.js"></script>
+      <link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/static/assets/css/icons.css" rel="stylesheet" type="text/css" />
+        <link href="/static/assets/css/style.css" rel="stylesheet" type="text/css" />
+        <script src="/static/plugins/morris/morris.min.js"></script>
+        
     </Head>
 
     <main>
-      <h1 className="title">
-        Welcome to <a href="https://nextjs.org">Next.js!</a>
-      </h1>
+    
+    <Header/>
 
-      <p className="description">
-        Get started by editing <code>pages/index.js</code>
-      </p>
 
-      <div className="grid">
-        <a href="https://nextjs.org/docs" className="card">
-          <h3>Documentation &rarr;</h3>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+    <HeaderPage/>
 
-        <a href="https://nextjs.org/learn" className="card">
-          <h3>Learn &rarr;</h3>
-          <p>Learn about Next.js in an interactive course with quizzes!</p>
-        </a>
+        <div className="wrapper">
+            <div className="container-fluid">
 
-        <a
-          href="https://github.com/zeit/next.js/tree/master/examples"
-          className="card"
-        >
-          <h3>Examples &rarr;</h3>
-          <p>Discover and deploy boilerplate example Next.js projects.</p>
-        </a>
 
-        <a
-          href="https://vercel.com/new?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          className="card"
-        >
-          <h3>Deploy &rarr;</h3>
-          <p>
-            Instantly deploy your Next.js site to a public URL with Vercel.
-          </p>
-        </a>
-      </div>
+                <div className="row">
+                    <div className="col-sm-12">
+                        <div className="page-title-box">
+                            <div className="row align-items-center">
+                                <div className="col-md-8">
+                                    <h4 className="page-title m-0">Главная</h4>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className="row">
+                    <div className="col-xl-3 col-md-6">
+                        <div className="card bg-primary mini-stat text-white">
+                            <div className="p-3 mini-stat-desc">
+                                <div className="clearfix">
+                                    <h6 className="text-uppercase mt-0 float-left text-white-50">Заказов</h6>
+                                    <h4 className="mb-3 mt-0 float-right">1,587</h4>
+                                </div>
+                                <div>
+                                    <span className="badge badge-light text-info"> +10 </span> <span className="ml-2">За сегодня</span>
+                                </div>
+                                
+                            </div>
+                            <div className="p-3">
+                                <div className="float-right">
+                                    <a href="#" className="text-white-50"><i className="mdi mdi-cube-outline h5"></i></a>
+                                </div>
+                                <p className="font-14 m-0">Вчера : 30</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-xl-3 col-md-6">
+                        <div className="card bg-info mini-stat text-white">
+                            <div className="p-3 mini-stat-desc">
+                                <div className="clearfix">
+                                    <h6 className="text-uppercase mt-0 float-left text-white-50">Поьзователей</h6>
+                                    <h4 className="mb-3 mt-0 float-right">{usersc}</h4>
+                                </div>
+                                <div>
+                                    <span className="badge badge-light text-info"> +2 </span> <span className="ml-2">За сегодня</span>
+                                </div>
+                            </div>
+                            <div className="p-3">
+                                <div className="float-right">
+                                    <a href="#" className="text-white-50"><i className="mdi mdi-buffer h5"></i></a>
+                                </div>
+                                <p className="font-14 m-0">Вчера : 5</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-xl-3 col-md-6">
+                        <div className="card bg-pink mini-stat text-white">
+                            <div className="p-3 mini-stat-desc">
+                                <div className="clearfix">
+                                    <h6 className="text-uppercase mt-0 float-left text-white-50">Всего получено</h6>
+                                    <h4 className="mb-3 mt-0 float-right">150 000 ₽</h4>
+                                </div>
+                               
+                            </div>
+                            <div className="p-3">
+                                <div className="float-right">
+                                    <a href="#" className="text-white-50"><i className="mdi mdi-tag-text-outline h5"></i></a>
+                                </div>
+                                <p className="font-14 m-0">Last : 15.8</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>  
+
+
+                <div className="row">
+                    <div className="col-xl-12">
+                        <div className="card">
+                            <div className="card-body">
+                                <h4 className="mt-0 header-title">Отчет</h4>
+                                <div className="row">
+                                    <div className="col-lg-8">
+                                        <div id="morris-line-example" className="morris-chart" style={{height: "300px"}}></div>
+                                    </div>
+                                    <div className="col-lg-4">
+                                        <div>
+                                            <h5 className="font-14 mb-5">Недельный отчет</h5>
+
+                                            <div>
+                                                <h5 className="mb-3">За неделю сделано : 100 продаж</h5>
+                                                
+                                                <a href="#" className="btn btn-primary btn-sm">Посмотреть подробнее <i className="mdi mdi-chevron-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+
+               
+                
+
+
+                <div className="row">
+                    <div className="col-xl-4">
+                        <div className="card">
+                            <div className="card-body">
+                                <h2>Новые</h2>
+                                <div className="col-xl-12">
+                                    <div className="card bg-pink mini-stat text-white">
+                                        <div className="p-3 mini-stat-desc">
+                                            <div className="clearfix">
+                                                <h6 className="text-uppercase mt-0 float-left text-white-50">Заказ #</h6>
+                                                <h4 className="mb-3 mt-0 float-right">15.9</h4>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div className="col-xl-4">
+                        <div className="card">
+                            <div className="card-body">
+                                <h2>В обработке</h2>
+                                <div className="col-xl-12">
+                                    <div className="card bg-warning mini-stat text-white">
+                                        <div className="p-3 mini-stat-desc">
+                                            <div className="clearfix">
+                                                <h6 className="text-uppercase mt-0 float-left text-white-50">Заказ #</h6>
+                                                <h4 className="mb-3 mt-0 float-right">15.9</h4>
+                                            </div>
+                                         
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-xl-4">
+                        <div className="card">
+                            <div className="card-body">
+                                <h2>Выполнено</h2>
+                                <div className="col-xl-12">
+                                    <div className="card bg-success mini-stat text-white">
+                                        <div className="p-3 mini-stat-desc">
+                                            <div className="clearfix">
+                                                <h6 className="text-uppercase mt-0 float-left text-white-50">Заказ #</h6>
+                                                <h4 className="mb-3 mt-0 float-right">106</h4>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div> 
+        </div>
+
+
+
+
+        <footer className="footer">
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-12">
+                        © 2019 - 2020 Zinzer <span className="d-none d-md-inline-block"> - Crafted with <i className="mdi mdi-heart text-danger"></i> by Themesdesign.</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </main>
-
-    <footer>
-      <a
-        href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Powered by <img src="/vercel.svg" alt="Vercel Logo" />
-      </a>
-    </footer>
-
-    <style jsx>{`
-      .container {
-        min-height: 100vh;
-        padding: 0 0.5rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-
-      main {
-        padding: 5rem 0;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-
-      footer {
-        width: 100%;
-        height: 100px;
-        border-top: 1px solid #eaeaea;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      footer img {
-        margin-left: 0.5rem;
-      }
-
-      footer a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      .title a {
-        color: #0070f3;
-        text-decoration: none;
-      }
-
-      .title a:hover,
-      .title a:focus,
-      .title a:active {
-        text-decoration: underline;
-      }
-
-      .title {
-        margin: 0;
-        line-height: 1.15;
-        font-size: 4rem;
-      }
-
-      .title,
-      .description {
-        text-align: center;
-      }
-
-      .description {
-        line-height: 1.5;
-        font-size: 1.5rem;
-      }
-
-      code {
-        background: #fafafa;
-        border-radius: 5px;
-        padding: 0.75rem;
-        font-size: 1.1rem;
-        font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-      }
-
-      .grid {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-
-        max-width: 800px;
-        margin-top: 3rem;
-      }
-
-      .card {
-        margin: 1rem;
-        flex-basis: 45%;
-        padding: 1.5rem;
-        text-align: left;
-        color: inherit;
-        text-decoration: none;
-        border: 1px solid #eaeaea;
-        border-radius: 10px;
-        transition: color 0.15s ease, border-color 0.15s ease;
-      }
-
-      .card:hover,
-      .card:focus,
-      .card:active {
-        color: #0070f3;
-        border-color: #0070f3;
-      }
-
-      .card h3 {
-        margin: 0 0 1rem 0;
-        font-size: 1.5rem;
-      }
-
-      .card p {
-        margin: 0;
-        font-size: 1.25rem;
-        line-height: 1.5;
-      }
-
-      @media (max-width: 600px) {
-        .grid {
-          width: 100%;
-          flex-direction: column;
-        }
-      }
-    `}</style>
-
-    <style jsx global>{`
-      html,
-      body {
-        padding: 0;
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-          Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-    `}</style>
+ 
+    
+    <script src="/static/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/assets/js/modernizr.min.js"></script>
+    <script src="/static/assets/js/waves.js"></script>
+    <script src="/static/assets/js/jquery.slimscroll.js"></script>
+    
+    <script src="/static/plugins/raphael/raphael.min.js"></script>
+    <script src="/static/assets/pages/dashboard.int.js"></script>
+       
+    <script> $.Dashboard.init();</script>
   </div>
-)
+  )
+}
+
+
+export async function getStaticProps(context) {
+    const usersres = await fetch('http://localhost:3000/api/admin/user/all')
+    const users = await usersres.json()
+    const userscres = await fetch('http://localhost:3000/api/admin/user/count')
+   
+    const usersc = await userscres.json()
+    return {
+        props: {
+            users,
+            usersc,
+        },
+        // Next.js will attempt to re-generate the page:
+        // - When a request comes in
+        // - At most once every second
+  
+      }
+    }
+
 
 export default Home

@@ -1,15 +1,34 @@
 {
-  "name": "nextjs",
-  "version": "0.1.0",
-  "private": true,
+  "name": "next-auth-example",
+  "version": "3.1.0",
+  "description": "An example project for NextAuth.js",
+  "repository": "https://github.com/nextauthjs/next-auth-example.git",
+  "homepage": "http://next-auth-example.now.sh",
+  "main": "",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next",
     "build": "next build",
     "start": "next start"
   },
+  "author": "Iain Collins <me@iaincollins.com>",
+  "license": "ISC",
   "dependencies": {
-    "next": "^9.3.3",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "axios": "^0.20.0",
+    "bcryptjs": "^2.4.3",
+    "connect-mongo": "^3.2.0",
+    "express": "^4.17.1",
+    "formidable": "^1.2.2",
+    "mongodb": "^3.6.0",
+    "multer": "^1.4.2",
+    "nanoid": "^3.1.12",
+    "next": "^9.5.0",
+    "next-auth": "^3.1.0",
+    "next-connect": "^0.8.1",
+    "next-session": "^3.3.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "sqlite3": "^4.2.0"
   }
 }
