@@ -1,122 +1,137 @@
-# NextAuth.js Example
+[![Next.js](https://assets.zeit.co/image/upload/v1538361091/repositories/next-js/next-js.png)](https://nextjs.org)
 
-[next-auth-example.now.sh](https://next-auth-example.now.sh)
+<h1 align="center">Next.js ❤️ MongoDB</h1>
 
-## About this project
+<div align="center">
+  
+[![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/new/project?template=https://github.com/hoangvvo/nextjs-mongodb-app)
 
-This is an example of how to use [NextAuth.js](https://next-auth.js.org) library to add authentication to a [Next.js](https://nextjs.org) application.
+A full-fledged app made with [**Next.js**](https://github.com/zeit/next.js/) and [**MongoDB**](https://www.mongodb.com/)
 
-## About NextAuth.js
+:rocket: [Check out the demo](https://nextjs-mongodb.now.sh/)
 
-NextAuth.js is an easy to implement, full-stack (client/server) open source authentication library designed for [Next.js](https://nextjs.org) and [Serverless](https://now.sh).
+</div>
 
-Go to [next-auth.js.org](https://next-auth.js.org) for more information and documentation.
+<h2 align="center">Features</h2>
 
-*NextAuth.js is not associated with Vercel or Next.js.*
+<p align="center">:heavy_check_mark: No Express.js :heavy_check_mark: Serverless ready :heavy_check_mark: API Routes :heavy_check_mark: Middleware</p>
 
-## Getting started
+<h3 align="center">:lock: Authentication</h3>
 
-### 1. Clone the repository and install dependancies
+<div align="center">
 
-```
-git clone https://github.com/iaincollins/next-auth-example.git
-cd next-auth-example
-npm i
-```
+<sup>*without passportjs*: [`a1747b7`](https://github.com/hoangvvo/nextjs-mongodb-app/commit/c36c5826f691032803760b5404ccec3446575504) *with passportjs*: `master`</sup>
 
-### 2. Configure your local environment
+- [x] Session
+- [x] Sign up/Sign in/Sign out
 
-Copy the .env.local.example file in this directory to .env.local (which will be ignored by Git):
+</div>
 
-```
-cp .env.local.example .env.local
-```
+<h3 align="center">:woman::man: Profile</h3>
 
-Add details for one or more providers (e.g. Google, Twitter, GitHub, Email, etc).
+<div align="center">
 
-#### Database configuration
+- [x] Profile picture, name, bio, email
+- [x] Edit profile
 
-A database is needed to persist user accounts and to support email sign in, but you can still use NextAuth.js for authentication without one by using OAuth for authentication. If you do not specify a database, JSON Web Tokens will be enabled by default.
+</div>
 
-You can skip configuring a database and come back to it later if you want.
+<h3 align="center">:wrench: Account</h3>
 
-When configuring your database you should also install an appropriate node_module.
+<div align="center">
 
-* **SQLite**
+- [x] Email verification
+- [x] Password change
+- [x] Password reset
 
-  Install module:
-  `npm i sqlite3`
+</div>
 
-  Database URI:
-  `sqlite://localhost/:memory:?synchronize=true`
+<h3 align="center">:eyes: Users and social</h3>
 
-* **MySQL**
+<div align="center">
 
-  Install module:
-  `npm i mysql`
+- [x] Other user profile
+- [x] Posting
+- [ ] PM?
 
-  Database URI:
-  `mysql://username:password@127.0.0.1:3306/database_name?synchronize=true`
+</div>
 
-* **Postgres**
+<div align="center">
+  
+<sup>Have any features that interest you, [make an issue](https://github.com/hoangvvo/nextjs-mongodb-app/issues). Would like to work on a feature, [make a PR](https://github.com/hoangvvo/nextjs-mongodb-app/pulls).<sup>
+  
+</div>
 
-  Install module:
-  `npm i pg`
+<h2 align="center">Guide</h2>
 
-  Database URI:
-  `postgres://username:password@127.0.0.1:5432/database_name?synchronize=true`
+Before getting started, I welcome you to read this [issue](https://github.com/hoangvvo/nextjs-mongodb-app/issues/13) on production readiness. The goal is not to use this project as it, but to implement your own version.
 
-* **MongoDB**
+This project accompanies the following posts:
 
-  Install module:
-  `npm i mongodb`
+- [How I build a full-fledged app with Next.js and MongoDB Part 1: User authentication](https://hoangvvo.com/blog/full-fledged-app-with-next-js-and-mongodb-part-1/)
+- [How I build a full-fledged app with Next.js and MongoDB Part 2: User profile and Profile Picture](https://hoangvvo.com/blog/full-fledged-app-with-next-js-and-mongodb-part-2/)
+- [How I build a full-fledged app with Next.js and MongoDB Part 3: Email Verification, Password Reset/Change](https://hoangvvo.com/blog/full-fledged-app-with-next-js-and-mongodb-part-3/)
 
-  Database URI:
-  `mongodb://username:password@127.0.0.1:27017/database_name?synchronize=true`
+Also check them out on [dev.to](https://dev.to/hoangvvo).
 
-Notes:
+The project is designed to **as simple as possible** for the learning purpose. Due to its simplicity, aspects such as **security** must be reconsidered before being **pushed to production**.
 
-* The example .env specifies an in-memory SQLite database that does not persist data.
-* SQLite is suitable for development / testing but not for production.
-* The option `?synchronize=true` automatically syncs schema changes to the database. It should not be used in production as may result in data loss if there are changes to the schema or to NextAuth.js
-* You can also specify a [TypeORM connection object](https://typeorm.io/#/connection-options) in `pages/api/auth/[...nextauth.js]` instead of a database URL / connection string.
+<h3 align="center">Dependencies</h3>
 
-### 3. Configure authentication providers
+This project uses the following dependencies:
 
-* Review and update options in `pages/api/auth/[...nextauth.js]` as needed.
+- `next.js` - v9.3 or above required for **API Routes** and new [**new data fetching method**](https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering).
+- `react` - v16.8 or above required for **react hooks**.
+- `react-dom` - v16.8 or above.
+- `swr` - required for state management
+- `mongodb` - may be replaced by `mongoose`.
+- `passport`, `passport-local` - required after [#39](https://github.com/hoangvvo/nextjs-mongodb-app/pull/39) for authentication
+- `next-connect` - recommended if you want to use Express/Connect middleware and easier method routing.
+- `express-session`, `connect-mongo` - required for session, may be replaced with other session libraries such as `cookie-session` or `next-iron-session`.
+- `bcryptjs` - optional, may be replaced with any password-hashing library. `argon2` recommended.
+- `validator` - optional but recommended.
+- `multer` - may be replaced with any middleware that handles `multipart/form-data`
+- `cloudinary` - optional, **only if** you are using [Cloudinary](https://cloudinary.com) for image upload.
+- `@sendgrid/mail` - optional, **only if** you are using [SendGrid](https://sendgrid.com/) to send emails.
 
-* When setting up OAUTH, in the developer admin page for each of your OAuth services, you should configure the callback URL to use a callback path of `{server}/api/auth/callback/{provider}`.
+<h3 align="center">Environmental variables</h3>
 
-  e.g. For Google OAuth you would use: `http://localhost:3000/api/auth/callback/google`
+The environment variables [will be inlined during build time](https://nextjs.org/docs#build-time-configuration) and thus should not be used in front-end codebase.
 
-  A list of configured providers and their callback URLs is available from the endpoint `/api/auth/providers`. You can find more information at https://next-auth.js.org/configuration/providers
+Required environmental variables in this project include:
 
-* You can also choose to specify an SMTP server for passwordless sign in via email.
+- `process.env.MONGODB_URI` The MongoDB Connection String (with credentials)
+- `process.env.EMAIL_FROM` The email address to send your emails from.
+- `process.env.DB_NAME` The name of the MongoDB database to be used.
+- `process.env.WEB_URI` The *URL* of your web.
+- `process.env.SESSION_SECRET` (only if you use `express-session`) The secret to be used in `express-session`.
+- `process.env.CLOUDINARY_URL` (optional, Cloudinary **only**) Cloudinary environment variable for configuration. See [this](https://cloudinary.com/documentation/node_integration#configuration).
+- `process.env.SENDGRID_API_KEY` (optional, SendGrid **only**) SendGrid API Key. See [this](https://sendgrid.com/docs/ui/account-and-settings/api-keys/).
 
-### 4. Start the application
+<h3 align="center">Development</h3>
 
-To run your site locally, use:
+Start the development server by running `yarn dev` or `npm run dev`. The project supports using `.env`. Getting started by create a `.env` file with the above variables.
 
-```
-npm run dev
-```
+#### `.env`
 
-To run it it production mode, use:
+I include my own MongoDB, Cloudinary, SendGrid environment variables in [.env.example](.env.example) for experimentation purposes. Please replace them with your owns and refrain from sabotaging them. You can try them in development by renaming it into `.env`.
 
-```
-npm build
-npm start
-```
+In production, it is recommended to set the environment variables using the options provided by your cloud/hosting providers. **Do not use or commit `.env`**.
 
-### 5. Configuring for production
+<h2 align="center">Contributing</h2>
 
-You must set the NEXTAUTH_URL environment variable with the URL of your site, before deploying to production.
+<div align="center">
+  
+Please see my [contributing.md](CONTRIBUTING.md).
 
-e.g. `NEXTAUTH_URL=https://example.com`
+</div>
 
-To do this in on Vercel, you can use the [Vercel project dashboard](https://vercel.com/dashboard) or the `now env` command:
+<h2 align="center">
+  License
+</h2>
 
-    now env add NEXTAUTH_URL production
-
-Be sure to also set environment variables for the Client ID and Client Secret values for all your authentication providers.
-
+<div align="center">
+  
+  [MIT](LICENSE)
+  
+</div>

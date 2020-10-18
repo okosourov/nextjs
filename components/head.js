@@ -9,6 +9,7 @@ function Header() {
     <link rel="icon" href="/favicon.ico" />
 
     <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/jquery.min.js"></script>
     <script src="/static/assets/js/bootstrap.bundle.min.js"></script>
     <script src="/static/assets/js/modernizr.min.js"></script>
     <script src="/static/assets/js/waves.js"></script>

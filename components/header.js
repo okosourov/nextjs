@@ -15,7 +15,7 @@ function HeaderPage() {
         
                         <div>
                             
-                            <a href="index.html" className="logo">
+                            <a href="/dashboard" className="logo">
                                 <img src="/static/assets/images/logo.png" alt="" height="26"/> 
                             </a>
         
@@ -31,32 +31,7 @@ function HeaderPage() {
         
         
         
-                                <li className="list-inline-item dropdown notification-list nav-user">
-                                    <a className="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button"
-                                    aria-haspopup="false" aria-expanded="false">
-                                        <img src="/static/assets/images/users/avatar-6.jpg" alt="user" className="rounded-circle"/>
-                                        <span className="d-none d-md-inline-block ml-1"> Рахимов Мадор  </span>
-                                    </a>
-                                    <div className="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown">
-                                        <a className="dropdown-item" href="#"><i className="dripicons-user text-muted"></i> Profile</a>
-                                        <a className="dropdown-item" href="#"><i className="dripicons-wallet text-muted"></i> My Wallet</a>
-                                        <a className="dropdown-item" href="#"><span className="badge badge-success float-right m-t-5">5</span><i className="dripicons-gear text-muted"></i> Settings</a>
-                                        <a className="dropdown-item" href="#"><i className="dripicons-lock text-muted"></i> Lock screen</a>
-                                        <div className="dropdown-divider"></div>
-                                        <a className="dropdown-item" href="#"><i className="dripicons-exit text-muted"></i> Logout</a>
-                                    </div>
-                                </li>
-                                <li className="menu-item list-inline-item">
-        
-                                    <a className="navbar-toggle nav-link">
-                                        <div className="lines">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </a>
-        
-                                </li>
+                                
         
                             </ul>
         
@@ -79,7 +54,7 @@ function HeaderPage() {
                             <ul className="navigation-menu">
         
                                 <li className="has-submenu">
-                                    <a href="/"><i className="dripicons-home"></i> Главная</a>
+                                    <a href="/dashboard"><i className="dripicons-home"></i> Главная</a>
                                 </li>
         
                                 <li className="has-submenu">

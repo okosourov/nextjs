@@ -1,7 +1,7 @@
 import nextConnect from 'next-connect';
 import { ObjectId } from 'mongodb';
 import { nanoid } from 'nanoid';
-import middleware from '../../../../middleware/database';
+import middleware from '../../../../middlewares/middleware';
 
 const handler = nextConnect();
 
